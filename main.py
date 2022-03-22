@@ -14,3 +14,5 @@ wc.generate_from_frequencies(bow)
 plt.imshow(wc, interpolation='bilinear')
 plt.axis("off")
 plt.show()
+wc.to_file("wordcloud.png")
+
