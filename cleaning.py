@@ -13,26 +13,32 @@ def text_prepering(tekst: str) -> str:
     return tekst
 
 
-def cleaning_words(tekst: str) -> list:
+def cleaning_words(tekst: list) -> list:
     stop_words = stopwords.words("english")
     lista: list = []
-    list_tekst = tekst.split(' ')
-    for word in list_tekst:
+    for word in tekst:
         if word not in stop_words:
             lista.append(word)
     return lista
 
 
-def stemming(wyrazenie: list) -> list:
+def stemming(wyrazenie: str) -> list:
     porter = PorterStemmer()
-    return [porter.stem(word) for word in wyrazenie]
+    list_tekst = wyrazenie.split(' ')
+    return [porter.stem(word) for word in list_tekst]
 
 
-def bag_of_words(words: list) -> dict:
-    bow = {}
-    for word in words:
-        if word not in bow.keys():
-            bow[word] = 1
-        else:
-            bow[word] += 1
-    return bow
+def longer_words(lista: list) -> list:
+    lista_nowa = []
+    for word in lista:
+        if len(word) > 3:
+            lista_nowa.append(word)
+    return lista_nowa
+
+
+def text_tokenizer(text):
+    tekst = text_prepering(text)
+    tekst = stemming(tekst)
+    tekst = cleaning_words(tekst)
+    tekst = longer_words(tekst)
+    return tekst

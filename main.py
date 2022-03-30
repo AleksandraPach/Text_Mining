@@ -1,18 +1,18 @@
-import matplotlib.pyplot as plt
-import pandas as pd
-from wordcloud import WordCloud
 import cleaning
+from cleaning import text_tokenizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
 
-tekst_fake = pd.read_csv(r'Datasets/Fake.csv')
-tekst_fake_title = " ".join(x for x in tekst_fake.title)
-tekst_fake_title = cleaning.text_prepering(tekst_fake_title)
-tekst_fake_title = cleaning.cleaning_words(tekst_fake_title)
-tekst_fake_title = cleaning.stemming(tekst_fake_title)
-bow = cleaning.bag_of_words(tekst_fake_title)
-wc = WordCloud()
-wc.generate_from_frequencies(bow)
-plt.imshow(wc, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-wc.to_file("wordcloud.png")
+tekst_fake = pd.read_csv(r'Dataset/Fake.csv')
 
+
+def main():
+    text = " ".join(x for x in tekst_fake.title)
+    tekst = cleaning.text_tokenizer(text)
+    vectorizer = TfidfVectorizer(tokenizer=text_tokenizer)
+    X_transform = vectorizer.fit_transform(tekst[:3])
+    # print(X_transform)
+    print(X_transform.toarray())
+
+
+main()
