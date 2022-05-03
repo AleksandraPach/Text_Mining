@@ -48,8 +48,6 @@ def text_tokenizer(text):
 
 
 def top_tokens(list_of_tokens, token_words, how_many) -> dict:
-    sum_list = list_of_tokens
-    suma = -np.sort(-sum_list)[:10]
     top_words = []
     top_counts = []
     top_dict = {}
