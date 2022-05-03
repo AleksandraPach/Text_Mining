@@ -1,7 +1,9 @@
 import re
 import numpy as np
+import matplotlib.pyplot as plt
 from nltk import PorterStemmer
 from nltk.corpus import stopwords
+from prettytable import PrettyTable
 
 
 def text_prepering(tekst: str) -> str:
@@ -45,14 +47,20 @@ def text_tokenizer(text):
     return tekst
 
 
-def top_tokens(list_of_tokens, token_words, how_many) -> list:
-    list_of_tokens = list_of_tokens
-    top_list = []
+def top_tokens(list_of_tokens, token_words, how_many) -> dict:
+    sum_list = list_of_tokens
+    suma = -np.sort(-sum_list)[:10]
+    top_words = []
+    top_counts = []
+    top_dict = {}
     for i in range(how_many):
         token_index = np.argmax(list_of_tokens)
-        top_list.append(token_words[token_index])
+        top_words.append(token_words[token_index])
+        top_counts.append(list_of_tokens[token_index])
         list_of_tokens[token_index] = 0
-    return top_list
+    for key, value in zip(top_words, top_counts):
+        top_dict[key] = value
+    return top_dict
 
 
 def top_documents(list_of_documents, how_many) -> list:
@@ -63,3 +71,23 @@ def top_documents(list_of_documents, how_many) -> list:
         top_list.append(token_index)
         list_of_documents[token_index] = 0
     return top_list
+
+
+def plot_table_most_important(top_dict, title):
+    # plot
+    words = list(top_dict.keys())[::-1]
+    counts = list(top_dict.values())[::-1]
+    plt.subplots(figsize=(11, 5))
+    y_pos = np.arange(len(words))
+    plt.barh(y_pos, counts)
+    plt.yticks(y_pos, words)
+    plt.ylabel("Term")
+    plt.xlabel("Count")
+    plt.title(title)
+    plt.show()
+    # pretty table
+    pretty_table = PrettyTable()
+    pretty_table.title = title
+    pretty_table.add_column("Term", words[::-1])
+    pretty_table.add_column("Count", counts[::-1])
+    return pretty_table
