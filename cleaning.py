@@ -56,6 +56,7 @@ def top_tokens(list_of_tokens, token_words, how_many) -> dict:
         top_words.append(token_words[token_index])
         top_counts.append(list_of_tokens[token_index])
         list_of_tokens[token_index] = 0
+        i += 1
     for key, value in zip(top_words, top_counts):
         top_dict[key] = value
     return top_dict
@@ -68,6 +69,7 @@ def top_documents(list_of_documents, how_many) -> list:
         token_index = np.argmax(list_of_documents, 0)
         top_list.append(token_index)
         list_of_documents[token_index] = 0
+        i += 1
     return top_list
 
 
