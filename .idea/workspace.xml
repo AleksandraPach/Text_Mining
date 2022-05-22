@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b7b4dd1-0048-4189-91f5-f4f9de2a6afc" name="Changes" comment="poprawka">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datasets/sentiment_tweets3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordcloud_general.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordcloud_negative.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordcloud_positive.png" beforeDir="false" />
-    </list>
+    <list default="true" id="9b7b4dd1-0048-4189-91f5-f4f9de2a6afc" name="Changes" comment="poprawka" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +196,7 @@
       <workItem from="1651773434591" duration="3652000" />
       <workItem from="1651777554360" duration="318000" />
       <workItem from="1651778241178" duration="23845000" />
-      <workItem from="1653155161381" duration="3942000" />
+      <workItem from="1653155161381" duration="4261000" />
     </task>
     <task id="LOCAL-00001" summary="poprawka">
       <created>1651596658636</created>
